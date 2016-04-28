@@ -15,6 +15,8 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bigkoo.pickerviewdemo.bean.ProvinceBean;
 
+import ws.temp.pickerviewdemo.R;
+
 
 public class MainActivity extends Activity {
 

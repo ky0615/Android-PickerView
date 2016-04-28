@@ -3,7 +3,7 @@ package com.bigkoo.pickerview.view;
 import java.util.ArrayList;
 import android.view.View;
 
-import com.bigkoo.pickerview.R;
+import ws.temp.pickerview.R;
 import com.bigkoo.pickerview.adapter.ArrayWheelAdapter;
 import com.bigkoo.pickerview.lib.WheelView;
 import com.bigkoo.pickerview.listener.OnItemSelectedListener;

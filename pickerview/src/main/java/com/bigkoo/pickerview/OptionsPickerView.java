@@ -9,6 +9,7 @@ import com.bigkoo.pickerview.view.BasePickerView;
 import com.bigkoo.pickerview.view.WheelOptions;
 
 import java.util.ArrayList;
+import ws.temp.pickerview.R;
 
 /**
  * Created by Sai on 15/11/22.

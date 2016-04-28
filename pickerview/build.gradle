@@ -2,15 +2,15 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "2.0.8"
+version = "8.0.8"
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 21
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -26,9 +26,9 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-def siteUrl = 'https://github.com/saiwu-bigkoo/Android-PickerView'                        // #CONFIG# // project homepage
-def gitUrl = 'https://github.com/saiwu-bigkoo/Android-PickerView.git'                     // #CONFIG# // project git
-group = "com.bigkoo"
+def siteUrl = 'https://github.com/ky0615/Android-PickerView'                        // #CONFIG# // project homepage
+def gitUrl = 'https://github.com/ky0615/Android-PickerView.git'                     // #CONFIG# // project git
+group = "ky0615"
 
 install {
     repositories.mavenInstaller {
@@ -47,9 +47,9 @@ install {
                 }
                 developers {
                     developer {
-                        id 'sai'                                           // #CONFIG# // your user id (you can write your nickname)
-                        name 'sai.wu'                                       // #CONFIG# // your user name
-                        email 'sai.wu@bigkoo.com'                               // #CONFIG# // your email
+                        id 'ky0615'                                           // #CONFIG# // your user id (you can write your nickname)
+                        name 'koutarou.yabe'                                       // #CONFIG# // your user name
+                        email 'idolm@sterpw'                               // #CONFIG# // your email
                     }
                 }
                 scm {
@@ -62,25 +62,37 @@ install {
     }
 }
 
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository url: "file:///Users/tarosa/workspace/maven"
+            pom.artifactId = 'android-picker-view'
+            pom.name = "PickerView For Android"
+            pom.groupId = 'ky0615'
+            pom.version = version
+        }
+    }
+}
+
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
 
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
+//task javadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())

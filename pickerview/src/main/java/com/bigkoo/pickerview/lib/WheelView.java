@@ -13,7 +13,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.bigkoo.pickerview.R;
+import ws.temp.pickerview.R;
 import com.bigkoo.pickerview.adapter.WheelAdapter;
 import com.bigkoo.pickerview.listener.OnItemSelectedListener;
 
