@@ -36,7 +36,8 @@ install {
         pom {
             project {
                 packaging 'aar'
-                name 'PickerView For Android'                                   // #CONFIG# // project title
+                name 'PickerView For Android'
+                // #CONFIG# // project title
                 url siteUrl
                 // Set your license
                 licenses {
@@ -47,8 +48,10 @@ install {
                 }
                 developers {
                     developer {
-                        id 'ky0615'                                           // #CONFIG# // your user id (you can write your nickname)
-                        name 'koutarou.yabe'                                       // #CONFIG# // your user name
+                        id 'ky0615'
+                        // #CONFIG# // your user id (you can write your nickname)
+                        name 'koutarou.yabe'
+                        // #CONFIG# // your user name
                         email 'idolm@sterpw'                               // #CONFIG# // your email
                     }
                 }
@@ -102,7 +105,8 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "PickerView"                                                 // #CONFIG# project name in jcenter
+        name = "PickerView"
+        // #CONFIG# project name in jcenter
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
