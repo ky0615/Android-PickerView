@@ -7,9 +7,29 @@ PickerView (2.x系列)
 
 2.x是全新的3D效果，比1.x版本更加贴近iOS的效果，从外观细节上也得到了改善。api兼容1.x版本，只需要把依赖的版本号升级即可，几乎不用修改代码即可完成升级。
 
-####使用gradle 依赖:
-```java
-   compile 'com.bigkoo:pickerview:2.0.8'
+#### Usage
+
+import on gladle:
+
+
+in default build.gradle
+
+```gradle
+allprojects {
+    repositories {
+        mavenCentral()
+        maven { url "https://ky0615.github.io/maven/" }
+    }
+}
+```
+
+in added app's gradle:
+```gradle
+
+dependencies {
+    compile 'ky0615:android-picker-view:2.0.8'
+}
+
 ```
 
 ## Demo 图片
