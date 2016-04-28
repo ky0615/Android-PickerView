@@ -3,6 +3,7 @@ package com.bigkoo.pickerview;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.view.BasePickerView;
@@ -11,20 +12,18 @@ import com.bigkoo.pickerview.view.WheelTime;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+
 import ws.temp.pickerview.R;
+
 /**
  * Created by Sai on 15/11/22.
  */
 public class TimePickerView extends BasePickerView implements View.OnClickListener {
-    public enum Type {
-        ALL, YEAR_MONTH_DAY, HOURS_MINS, MONTH_DAY_HOUR_MIN , YEAR_MONTH
-    }// 四种选择模式，年月日时分，年月日，时分，月日时分
-
-    WheelTime wheelTime;
-    private View btnSubmit, btnCancel;
-    private TextView tvTitle;
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
+    WheelTime wheelTime;
+    private Button btnSubmit, btnCancel;
+    private TextView tvTitle;
     private OnTimeSelectListener timeSelectListener;
 
     public TimePickerView(Context context, Type type) {
@@ -32,9 +31,9 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 
         LayoutInflater.from(context).inflate(R.layout.pickerview_time, contentContainer);
         // -----确定和取消按钮
-        btnSubmit = findViewById(R.id.btnSubmit);
+        btnSubmit = (Button) findViewById(R.id.btnSubmit);
         btnSubmit.setTag(TAG_SUBMIT);
-        btnCancel = findViewById(R.id.btnCancel);
+        btnCancel = (Button) findViewById(R.id.btnCancel);
         btnCancel.setTag(TAG_CANCEL);
         btnSubmit.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
@@ -69,6 +68,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 
     /**
      * 设置选中时间
+     *
      * @param date
      */
     public void setTime(Date date) {
@@ -83,6 +83,15 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         wheelTime.setPicker(year, month, day, hours, minute);
+    }
+
+    /**
+     * 设置是否循环滚动
+     *
+     * @param cyclic
+     */
+    public void setCyclic(boolean cyclic) {
+        wheelTime.setCyclic(cyclic);
     }
 
 //    /**
@@ -105,15 +114,6 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 //        show();
 //    }
 
-    /**
-     * 设置是否循环滚动
-     *
-     * @param cyclic
-     */
-    public void setCyclic(boolean cyclic) {
-        wheelTime.setCyclic(cyclic);
-    }
-
     @Override
     public void onClick(View v) {
         String tag = (String) v.getTag();
@@ -134,15 +134,39 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         }
     }
 
-    public interface OnTimeSelectListener {
-        public void onTimeSelect(Date date);
-    }
-
     public void setOnTimeSelectListener(OnTimeSelectListener timeSelectListener) {
         this.timeSelectListener = timeSelectListener;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         tvTitle.setText(title);
+    }
+
+    public void setTitle(int title) {
+        tvTitle.setText(title);
+    }
+
+    public void setSubmitTitle(int title) {
+        btnSubmit.setText(title);
+    }
+
+    public void setSubmitTitle(String title) {
+        btnSubmit.setText(title);
+    }
+
+    public void setbtnCancelTitle(int title) {
+        btnCancel.setText(title);
+    }
+
+    public void setbtnCancelTitle(String title) {
+        btnCancel.setText(title);
+    }
+
+    public enum Type {
+        ALL, YEAR_MONTH_DAY, HOURS_MINS, MONTH_DAY_HOUR_MIN, YEAR_MONTH
+    }// 四种选择模式，年月日时分，年月日，时分，月日时分
+
+    public interface OnTimeSelectListener {
+        public void onTimeSelect(Date date);
     }
 }
